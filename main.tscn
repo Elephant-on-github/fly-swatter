@@ -1,0 +1,328 @@
+[gd_scene format=3 uid="uid://mdupxh1ff01b"]
+
+[ext_resource type="Script" uid="uid://coidye031hqvg" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://bnpm2p4kxqu4m" path="res://tilemap.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ccptn16g4n7ik" path="res://fly.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cn16ncq6s73rp" path="res://FlySwatter.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://gucg7mdequbg" path="res://fly.gd" id="4_efxa6"]
+[ext_resource type="Script" uid="uid://bjya57hxxm626" path="res://swatter.gd" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cpc5fulr8c0lp" path="res://fantasy-ui-borders.svg" id="6_4c57u"]
+[ext_resource type="FontFile" uid="uid://dv0asnkvkgpt3" path="res://Silkscreen/Silkscreen-Regular.ttf" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://ckgmy7qcd2c5h" path="res://hourglass.png" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://b7jnmu4nh0brj" path="res://animated_sprite_2d.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://il04mxvuk3jk" path="res://label.gd" id="7_kek77"]
+[ext_resource type="Script" uid="uid://c30erhh8mtqne" path="res://label_swatted.gd" id="12_dg77c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeska"]
+atlas = ExtResource("2_1bvp3")
+region = Rect2(187, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvmpa"]
+radius = 32.24903
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeska"]
+size = Vector2(1.5, 2.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deqvp"]
+atlas = ExtResource("2_1bvp3")
+region = Rect2(85, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvmpa"]
+atlas = ExtResource("6_4c57u")
+region = Rect2(102, 300, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w48qg"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivmo"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yaehf"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_074og"]
+atlas = ExtResource("7_5vw27")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_074og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yaehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cqfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w48qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efxa6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1bvp3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Main" type="Control" unique_id=81225702]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h2yge")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1818442430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_oeska")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Fly" type="Sprite2D" parent="." unique_id=1103188556]
+z_index = 4
+position = Vector2(359, 188)
+texture = ExtResource("3_lquwl")
+script = ExtResource("4_efxa6")
+
+[node name="Area2D" type="Area2D" parent="Fly" unique_id=876320989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fly/Area2D" unique_id=2091154039]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_mvmpa")
+
+[node name="FlyTemplate" type="Sprite2D" parent="." unique_id=1807150358]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+position = Vector2(24130, -6455)
+texture = ExtResource("3_lquwl")
+script = ExtResource("4_efxa6")
+
+[node name="Area2D" type="Area2D" parent="FlyTemplate" unique_id=91412193]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyTemplate/Area2D" unique_id=1373543217]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_mvmpa")
+
+[node name="swatter" type="Sprite2D" parent="." unique_id=779234917]
+z_index = 5
+position = Vector2(480, 224)
+texture = ExtResource("4_1bvp3")
+offset = Vector2(-0.125, 32.125)
+script = ExtResource("5_lquwl")
+
+[node name="swatterarea" type="Area2D" parent="swatter" unique_id=506468669]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="swatter/swatterarea" unique_id=668771961]
+shape = SubResource("RectangleShape2D_oeska")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=517514681]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 264.0
+offset_bottom = 264.0
+texture = SubResource("AtlasTexture_deqvp")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect3" unique_id=772172302]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mvmpa")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect3/NinePatchRect2" unique_id=9572645]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 16.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect3/NinePatchRect2/MarginContainer" unique_id=1324615651]
+z_index = 1
+position = Vector2(32.000015, 115.000015)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_5vw27")
+frame_progress = 0.3002362
+script = ExtResource("7_272bh")
+
+[node name="Label" type="Label" parent="NinePatchRect3/NinePatchRect2" unique_id=1002913137]
+process_mode = 3
+process_priority = 5
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -69.5
+offset_right = -24.0
+offset_bottom = 69.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 108
+text = "0"
+script = ExtResource("7_kek77")
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="." unique_id=2063553596]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 0
+offset_left = 786.0
+offset_top = 22.0
+offset_right = 1026.0
+offset_bottom = 262.0
+texture = SubResource("AtlasTexture_deqvp")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect4" unique_id=1300853326]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mvmpa")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect4/NinePatchRect2" unique_id=1000329200]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 16.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect4/NinePatchRect2/MarginContainer" unique_id=1472279821]
+z_index = 1
+position = Vector2(32.000015, 115.000015)
+sprite_frames = SubResource("SpriteFrames_efxa6")
+script = ExtResource("7_272bh")
+
+[node name="Label" type="Label" parent="NinePatchRect4/NinePatchRect2" unique_id=1461140824]
+process_mode = 3
+process_priority = 5
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -69.5
+offset_right = -24.0
+offset_bottom = 69.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 108
+text = "0"
+script = ExtResource("12_dg77c")
+
+[connection signal="collided" from="FlyTemplate" to="." method="_on_fly_template_collided"]
+[connection signal="collided" from="FlyTemplate" to="NinePatchRect4/NinePatchRect2/Label" method="_on_fly_template_collided"]
