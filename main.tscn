@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://b7jnmu4nh0brj" path="res://animated_sprite_2d.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://il04mxvuk3jk" path="res://label.gd" id="7_kek77"]
 [ext_resource type="Script" uid="uid://c30erhh8mtqne" path="res://label_swatted.gd" id="12_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bevddxgxt1rij" path="res://badflyswatteranim.png" id="12_ycdy4"]
+[ext_resource type="Script" uid="uid://c84mtt1sri8qj" path="res://label_3.gd" id="14_vivmo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeska"]
 atlas = ExtResource("2_1bvp3")
@@ -136,14 +138,52 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cegan"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82xsv"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_getpj"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryguw"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d13ii"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(128, 128, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_efxa6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_1bvp3")
+"texture": SubResource("AtlasTexture_cegan")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1bvp3")
+"texture": SubResource("AtlasTexture_82xsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d13ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_getpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82xsv")
 }],
 "loop": 1,
 "name": &"default",
@@ -162,6 +202,8 @@ region = Rect2(221, 0, 16, 16)
 atlas = ExtResource("2_1bvp3")
 region = Rect2(85, 0, 16, 16)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oeska"]
+
 [node name="Main" type="Control" unique_id=81225702]
 layout_mode = 3
 anchors_preset = 15
@@ -170,6 +212,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h2yge")
+metadata/_edit_vertical_guides_ = [-1071.0]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1818442430]
 layout_mode = 1
@@ -207,6 +250,7 @@ script = ExtResource("5_lquwl")
 
 [node name="swatterarea" type="Area2D" parent="swatter" unique_id=506468669]
 unique_name_in_owner = true
+position = Vector2(-1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="swatter/swatterarea" unique_id=668771961]
 shape = SubResource("RectangleShape2D_oeska")
@@ -261,7 +305,7 @@ z_index = 1
 position = Vector2(32.000015, 115.000015)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_5vw27")
-frame_progress = 0.8954064
+frame_progress = 0.64202535
 script = ExtResource("7_272bh")
 
 [node name="timer" type="Label" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2" unique_id=1002913137]
@@ -314,13 +358,15 @@ size_flags_horizontal = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/MarginContainer" unique_id=1472279821]
 z_index = 1
-position = Vector2(32.000015, 115.000015)
+position = Vector2(14, 117.000015)
 sprite_frames = SubResource("SpriteFrames_efxa6")
+frame_progress = 0.61277574
 script = ExtResource("7_272bh")
 
 [node name="Label" type="Label" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2" unique_id=1461140824]
 process_mode = 3
 process_priority = 5
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -338,6 +384,31 @@ theme_override_fonts/font = ExtResource("7_4c57u")
 theme_override_font_sizes/font_size = 108
 text = "0"
 script = ExtResource("12_dg77c")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2" unique_id=2107265954]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 48.0
+offset_right = 215.0
+offset_bottom = 187.0
+
+[node name="Label3" type="Label" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer" unique_id=1953557626]
+process_mode = 3
+process_priority = 5
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 108
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+script = ExtResource("14_vivmo")
+max_width = 90
+expand_to_text_width = true
+min_size = 12
+max_size = 72
 
 [node name="Game Area" type="Control" parent="UI_ETC" unique_id=387993341]
 layout_mode = 2
@@ -365,7 +436,6 @@ size_flags_horizontal = 3
 
 [node name="prizes" type="Control" parent="UI_ETC/Game Area/CenterContainer" unique_id=1832721911]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(400, 400)
 custom_maximum_size = Vector2(400, 400)
 layout_mode = 2
@@ -405,12 +475,69 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_3dc5f")
 
+[node name="BiggerSize" type="Button" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/NinePatchRect" unique_id=1784068264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
+
+[node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/NinePatchRect/BiggerSize" unique_id=2071223682]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 48
+text = "Bigger!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="NinePatchRect2" type="NinePatchRect" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer" unique_id=30454955]
 layout_mode = 2
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_3dc5f")
 
+[node name="Button" type="Button" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/NinePatchRect2" unique_id=681686507]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
+
+[node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/NinePatchRect2/Button" unique_id=571054423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("7_4c57u")
+theme_override_font_sizes/font_size = 48
+text = "Prize"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="collided" from="FlyTemplate" to="." method="_on_fly_template_collided"]
 [connection signal="collided" from="FlyTemplate" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/Label" method="_on_fly_template_collided"]
+[connection signal="collided" from="FlyTemplate" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/Label3" method="_on_fly_template_collided"]
+[connection signal="prize_selected" from="swatter" to="." method="_on_swatter_prize_selected"]
 [connection signal="finished" from="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" to="." method="_on_label_finished"]
 [connection signal="finished" from="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" to="FlyTemplate" method="_on_label_finished"]
+[connection signal="pressed" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/NinePatchRect/BiggerSize" to="swatter" method="_on_bigger_size_pressed"]

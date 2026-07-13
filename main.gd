@@ -39,3 +39,8 @@ func _on_label_finished():
 	%prizes.visible = true
 	stop = true
 	
+
+
+func _on_swatter_prize_selected():
+	%prizes.visible = false
+	stop = false
