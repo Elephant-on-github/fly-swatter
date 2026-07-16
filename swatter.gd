@@ -1,7 +1,7 @@
 extends Sprite2D
 
-signal prize_selected
-@onready var collision = $swatterarea/CollisionShape2D
+
+@onready var collision = %CollisionShapeSwatter
 
 var scale2 : Vector2 = Vector2(1.0, 1.0)
 var follow_speed = 100
@@ -13,7 +13,12 @@ func _process(delta):
 	var target = get_global_mouse_position()
 	self.position = self.position.lerp(target, follow_speed * delta)
 
-
-func _on_bigger_size_pressed():
-	collision.apply_scale(scale2 * 5)
-	prize_selected.emit()
+var base = 10.0
+var level = 0
+var multiplier = 1.2
+func _on_bigger_container_bigger_bought():
+	level += 1
+	var target_radius = base * (multiplier ** level)
+	
+	collision.shape.radius = target_radius
+	print(collision.shape.radius)

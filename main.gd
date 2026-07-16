@@ -1,4 +1,5 @@
 extends Control
+signal pause_timer(bool:bool)
 
 var stop : bool
 
@@ -38,9 +39,17 @@ func _process(delta):
 func _on_label_finished():
 	%prizes.visible = true
 	stop = true
+	pause_timer.emit(true)
 	
 
+# superseded by escaping
+#func _on_bigger_container_prize_selected():
+	#%prizes.visible = false
+	#stop = false
+	#pause_timer.emit(false)
 
-func _on_swatter_prize_selected():
+
+func _on_prizes_escaped_prize():
 	%prizes.visible = false
 	stop = false
+	pause_timer.emit(false)

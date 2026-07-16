@@ -5,7 +5,7 @@ signal collided(with_sprite)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(self.name)
+	# print(self.name)
 	pass # Replace with function body.
 
 

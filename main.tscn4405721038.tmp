@@ -231,10 +231,6 @@ region = Rect2(85, 0, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oeska"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_375m7"]
-atlas = ExtResource("2_1bvp3")
-region = Rect2(119, 17, 16, 16)
-
 [node name="Main" type="Control" unique_id=81225702]
 layout_mode = 3
 anchors_preset = 15
@@ -594,43 +590,6 @@ text = "Prize"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start" type="Control" parent="." unique_id=1414067729]
-z_index = 10
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Start" unique_id=322822808]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_375m7")
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Start" unique_id=757483607]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Start/VBoxContainer" unique_id=77348789]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="Start/VBoxContainer" unique_id=1387916504]
-layout_mode = 2
-size_flags_vertical = 3
-
-[connection signal="pause_timer" from="." to="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" method="_on_main_pause_timer"]
 [connection signal="collided" from="FlyTemplate" to="." method="_on_fly_template_collided"]
 [connection signal="collided" from="FlyTemplate" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/Label" method="_on_fly_template_collided"]
 [connection signal="collided" from="FlyTemplate" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_fly_template_collided"]

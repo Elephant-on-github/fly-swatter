@@ -69,3 +69,8 @@ func _draw() -> void:
 func _on_fly_template_collided(with_sprite):
 	count += 1 
 	self.text = str(count)
+
+
+func _on_bigger_container_cost(cost):
+	count = count - cost
+	self.text = str(count)
