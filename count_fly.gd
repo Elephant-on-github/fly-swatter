@@ -1,6 +1,8 @@
 @tool class_name AutoSizeLabel extends Label
 
 var count = 0
+var multiplier : int = 1
+
 
 @export var max_width: int = 400:
 	get:
@@ -67,10 +69,19 @@ func _draw() -> void:
 
 
 func _on_fly_template_collided(with_sprite):
-	count += 1 
+	count += 1 * multiplier 
 	self.text = str(count)
 
 
 func _on_bigger_container_cost(cost):
 	count = count - cost
 	self.text = str(count)
+
+
+func _on_jucier_container_cost(cost):
+	count = count - cost
+	self.text = str(count)
+
+
+func _on_jucier_container_jucier_bought():
+	multiplier += 1 

@@ -2,16 +2,17 @@ extends Sprite2D
 
 signal collided(with_sprite)
 
+var count : int
+var active_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# print(self.name)
-	pass # Replace with function body.
-
+	start_moving_loop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	count += 1
 	if name == "FlyTemplate":
 		return
 	# In the cloned sprite's script
@@ -24,6 +25,19 @@ func _process(delta):
 					collided.emit(other)
 					queue_free()
 					return
+					
+
+func start_moving_loop() -> void:
+	var random_pos = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
+					randf_range(20, get_viewport_rect().size.y - 20))
+	
+	var tween = self.create_tween()
+	tween.tween_property(self, "position", random_pos, 1.0)
+	
+	# When this movement finishes, wait 0.2 seconds and run this function again!
+	tween.finished.connect(func(): 
+		get_tree().create_timer(0.2).timeout.connect(start_moving_loop)
+	)
 #^ (partially) from the AI
 
 

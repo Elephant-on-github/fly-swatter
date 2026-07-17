@@ -6,7 +6,9 @@ var stop : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	%prizes.visible = false
-
+	%Start.visible = true
+	stop = true
+	pause_timer.emit(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var spawn_timer: float = 0.0
@@ -51,5 +53,11 @@ func _on_label_finished():
 
 func _on_prizes_escaped_prize():
 	%prizes.visible = false
+	stop = false
+	pause_timer.emit(false)
+
+
+func _on_texture_rect_2_start():
+	%Start.visible = false
 	stop = false
 	pause_timer.emit(false)

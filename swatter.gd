@@ -16,9 +16,10 @@ func _process(delta):
 var base = 10.0
 var level = 0
 var multiplier = 1.2
+
 func _on_bigger_container_bigger_bought():
 	level += 1
 	var target_radius = base * (multiplier ** level)
-	
+	self.apply_scale(Vector2(1.1,1.1))
 	collision.shape.radius = target_radius
 	print(collision.shape.radius)
