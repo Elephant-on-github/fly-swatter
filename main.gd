@@ -68,6 +68,9 @@ func spawn_clone(Template : FlyingInsect):
 	add_child(clone)
 	clone.collided.connect(%FlyCount._on_insect_collided)
 	clone.collided.connect(%Lightning.trigger_chain)
+	clone.collided.connect($swatter/swatterarea/squash._on_insect_collided) #fixed by ai - connect visual effects to collided signal
+	clone.collided.connect($swatter/swatterarea/pulse.trigger_pulse) #fixed by ai - pulse on swat
+	clone.collided.connect($swatter/swatterarea/pulse2.trigger_pulse) #fixed by ai - pulse2 on swat
 	clone.add_to_group("insects")
 
 
@@ -93,6 +96,7 @@ func _on_label_finished():
 	await get_tree().create_timer(0.72).timeout
 	leveltext.visible = false
 	%prizes.visible = true
+	%prizes.count = 0 #fixed by ai - reset escape counter when shop opens
 	
 	
 

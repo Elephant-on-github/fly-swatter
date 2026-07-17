@@ -45,7 +45,7 @@ func reset_range():
 func decrease_range():
 	rangedist -= 1
 
-func trigger_chain(_something, start_insect: FlyingInsect) -> void: #added by AI - was Vector2, crashed because signal passes FlyingInsect
+func trigger_chain(_something, start_insect: FlyingInsect, _chain_kill := false) -> void: #added by AI - was Vector2, crashed because signal passes FlyingInsect #fixed by ai
 	reset_range()
 	var current_pos: Vector2 = start_insect.global_position #added by AI
 	while rangedist > 0:
@@ -61,13 +61,20 @@ func trigger_chain(_something, start_insect: FlyingInsect) -> void: #added by AI
 					closest_insect = insect
 		if closest_insect != null:
 			_draw_bolt(current_pos, closest_insect.global_position)
-			#added by AI - disconnect lightning from chain-killed insects to prevent recursive trigger_chain calls
+			#fixed by ai - disconnect lightning from chain-killed insects to prevent recursive trigger_chain calls
 			var cb := Callable(self, "trigger_chain")
 			if closest_insect.collided.is_connected(cb):
 				closest_insect.collided.disconnect(cb)
-			closest_insect.collided.emit(null, closest_insect)
+			closest_insect.collided.emit(null, closest_insect, true) #fixed by ai - chain_kill=true prevents score double-count
 			closest_insect.queue_free()
 			current_pos = closest_insect.global_position
+			#fixed by ai - manually trigger visual effects for chain-killed insects
+			var squash_node = get_tree().current_scene.find_child("squash", true, false)
+			if squash_node:
+				squash_node.trigger_at(closest_insect.global_position)
+			var pulse_node = get_tree().current_scene.find_child("pulse", true, false)
+			if pulse_node:
+				pulse_node.trigger_pulse_at(closest_insect.global_position, randf_range(0.0, TAU))
 			decrease_range()
 			await get_tree().create_timer(0.06).timeout
 		else:

@@ -88,7 +88,9 @@ func _on_jucier_container_jucier_bought():
 	multiplier += 1 
 
 
-func _on_insect_collided(_with_sprite, insect: FlyingInsect):
+func _on_insect_collided(_with_sprite, insect: FlyingInsect, chain_kill := false) -> void: #fixed by ai
+	if chain_kill:
+		return #fixed by ai - lightning chain kills don't award score
 	count += insect.score_value * multiplier
 	running_total += 1
 	self.text = str(count)

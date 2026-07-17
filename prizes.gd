@@ -10,7 +10,7 @@ signal escaped_prize
 func _process(delta):
 	delta = delta
 	# ^ get rid of warning
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and self.visible: #fixed by ai - only emit when shop is visible
 		escaped_prize.emit()
 	if Input.is_action_just_pressed("ui_accept") and self.visible == true and !get_global_rect().has_point(get_global_mouse_position()):
 		count +=1

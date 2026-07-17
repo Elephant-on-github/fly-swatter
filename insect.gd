@@ -1,7 +1,7 @@
 class_name FlyingInsect 
 extends Sprite2D
 
-signal collided(with_sprite, type : FlyingInsect)
+signal collided(with_sprite, type : FlyingInsect, chain_kill : bool) #fixed by ai
 
 
 var template_name: String = ""
@@ -29,7 +29,7 @@ func _process(_delta):
 				if other.name == "swatterarea":
 					health -= 1
 					if health <= 0:
-						collided.emit(other, self)
+						collided.emit(other, self, false) #fixed by ai
 						queue_free()
 						return
 					else:
