@@ -14,6 +14,7 @@ func _ready():
 	visible = true #added by AI - Main starts invisible in scene, nothing was showing
 	%prizes.visible = false
 	%Start.visible = true
+	%FailLabel.visible = false
 	stop = true
 	pause_timer.emit(true)
 	leveltext.visible = false
@@ -94,7 +95,15 @@ func _on_label_finished():
 	
 
 func fail() -> void:
-	pass # implement me
+	%FailLabel.visible = true
+	var format_text = '''
+	[center][font_size=56][s][wave] Level %d [/wave][/s]
+	[color=red]Fail[/color][/font_size]
+	[hr]
+	%d Flies killed
+	%d upgrades purchased
+	'''
+	%FailLabel.text = format_text % [level,%FlyCount.running_total,%BiggerContainer.level + %Slower.level + %JucierContainer.level + %Lightning.level ]
 
 # superseded by escaping
 #func _on_bigger_container_prize_selected():

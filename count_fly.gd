@@ -1,7 +1,10 @@
-@tool class_name AutoSizeLabel extends Label
+#@tool class_name AutoSizeLabel extends Label
+@tool extends Label
+
 
 var count = 0
 var multiplier : int = 1
+var running_total : int = 0
 
 
 @export var max_width: int = 400:
@@ -85,6 +88,7 @@ func _on_jucier_container_jucier_bought():
 	multiplier += 1 
 
 
-func _on_insect_collided(with_sprite, insect: FlyingInsect):
+func _on_insect_collided(_with_sprite, insect: FlyingInsect):
 	count += insect.score_value * multiplier
+	running_total += 1
 	self.text = str(count)
