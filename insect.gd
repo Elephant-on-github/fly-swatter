@@ -1,5 +1,5 @@
+class_name FlyingInsect 
 extends Sprite2D
-class_name FlyingInsect
 
 signal collided(with_sprite, type : FlyingInsect)
 
@@ -8,6 +8,7 @@ var template_name: String = ""
 var score_value : int = 1
 var active_tween: Tween
 var slower : float = 2
+var health :int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +27,13 @@ func _process(_delta):
 		if overlapping.size() > 0:
 			for other in overlapping:
 				if other.name == "swatterarea":
-					collided.emit(other, self)
-					queue_free()
-					return
+					health -= 1
+					if health <= 0:
+						collided.emit(other, self)
+						queue_free()
+						return
+					else:
+						_on_injured()
 					
 
 func start_moving_loop() -> void:
@@ -42,7 +47,10 @@ func start_moving_loop() -> void:
 	tween.finished.connect(func(): 
 		get_tree().create_timer(0.2 * slower).timeout.connect(start_moving_loop)
 	)
-#^ (partially) from the AI
+#^ (very little now) from the AI
+
+func _on_injured():
+	pass #set in extends
 
 
 func _on_label_finished():

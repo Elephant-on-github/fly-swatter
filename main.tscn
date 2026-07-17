@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ckgmy7qcd2c5h" path="res://hourglass.png" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://b7jnmu4nh0brj" path="res://animated_sprite_2d.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://il04mxvuk3jk" path="res://label.gd" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://d4c2et1uidvh3" path="res://scarab injured.png" id="7_qsp4k"]
 [ext_resource type="Script" uid="uid://cn0y0mhpqndfl" path="res://pulse.gd" id="7_vivmo"]
 [ext_resource type="Script" uid="uid://bmpnjwxh2owyn" path="res://pulse_2.gd" id="8_2cqfq"]
 [ext_resource type="Script" uid="uid://c8tcwiit3ar5g" path="res://squash.gd" id="10_ryguw"]
@@ -319,6 +320,7 @@ position = Vector2(20000, 20000)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_0odxb")
 script = ExtResource("5_1u8w0")
+injured_texture = ExtResource("7_qsp4k")
 
 [node name="Area2D" type="Area2D" parent="BeetleTemplate" unique_id=1167661403]
 
@@ -983,8 +985,7 @@ texture = SubResource("AtlasTexture_7ctrr")
 
 [node name="helpscreen" type="NinePatchRect" parent="Start" unique_id=1548271598]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(400, 264)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1026,7 +1027,9 @@ Move with the mouse and press [wave]space![/wave] to [shake]swat[/shake]
 
 do it over buttons to [pulse] select! [/pulse]
 
-Outside of menus will exit if you press a [u] few [/u] times"
+Outside of menus will exit if you press a [u] few [/u] times
+
+Some bugs can be [color=red] injured [/color]"
 
 [connection signal="pause_timer" from="." to="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" method="_on_main_pause_timer"]
 [connection signal="collided" from="FlyTemplate" to="swatter/swatterarea/squash" method="_on_fly_template_collided"]

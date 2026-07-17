@@ -37,19 +37,19 @@ func _process(delta):
 		if flies > 0:
 			spawn_clone($FlyTemplate)
 			flies -= 1
-		else: print("no more flies") #debug
+		#else: print("no more flies") #debug
 		#BEETLE
 		if beetles > 0:
 			spawn_clone($BeetleTemplate)
 			beetles -= 1
-		else: print("no more beetles") #debug
+		#else: print("no more beetles") #debug
 		# Reset the timer
 		spawn_timer = 0.0
 
 
 func calc_number_spawn(levelint):
-	flies = 10 * (1.3 ** levelint)
-	beetles = 5 * (1.2 ** levelint)
+	flies = 5 * (1.3 ** levelint)
+	beetles = 1 * (1.2 ** levelint)
 	#wasps = 2 * (1.1 ** level)
 	
 func spawn_clone(Template : FlyingInsect):
@@ -79,7 +79,7 @@ func _on_label_finished():
 	var insects = get_tree().get_nodes_in_group("insects")
 	if insects == []: 
 		level += 1
-		%timer.add_time(1)
+		%timer.add_time(0.5)
 		new_level = true
 	else: 
 	# print(insects, "melon") testing

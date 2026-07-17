@@ -6,7 +6,7 @@ var paused : bool
 func _ready():
 	self.text = "0"
 
-var count_to = 10
+var count_to : float = 10
 var num : float = count_to
 var num2 : int
 
@@ -24,7 +24,7 @@ func _process(delta):
 	else:
 		pass
 
-func add_time(seconds : int):
+func add_time(seconds : float):
 	num += seconds
 	count_to += seconds
 
