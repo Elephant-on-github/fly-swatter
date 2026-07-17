@@ -13,4 +13,6 @@ no audio (not enough time / cannot be bothered)
 
 Assets made by me or from Kenney.nl (great website)
 
+Some AI used for bug fixing and some development
+
 see  [Credits](credits.md)
