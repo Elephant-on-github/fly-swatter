@@ -10,4 +10,4 @@ Squash more flies and advance through the levels
 
 Assets made by me or from Kenney.nl (great website)
 
-see [[credits.md]]
+see  [Credits](credits.md)
