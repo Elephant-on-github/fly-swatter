@@ -31,7 +31,7 @@ func _process(delta):
 		new_level = false
 	
 	spawn_timer += delta
-	if stop or %timer.num < 1:
+	if stop or %timer.num < 2:
 		pass
 	elif spawn_timer >= spawn_delay:
 		if flies > 0:

@@ -7,7 +7,7 @@ signal collided(with_sprite, type : FlyingInsect)
 var template_name: String = ""
 var score_value : int = 1
 var active_tween: Tween
-var slower : float = 3
+var slower : float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

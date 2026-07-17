@@ -25,10 +25,10 @@ func level_formatted(levelint) -> String :
 
 
 func _process(_delta):
-	if int(%FlyCount.text) < price or level >= 15:
+	if int(%FlyCount.text) < price or level >= 10:
 		button.disabled = true
 		disabled = true
-		if level >= 15:
+		if level >= 10:
 			name_label.text = "Squash More! " + level_formatted("max")
 	else:
 		button.disabled = false

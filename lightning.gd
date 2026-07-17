@@ -4,7 +4,7 @@ extends NinePatchRect
 @onready var price_label = $Button/Label2
 @onready var name_label = $Button/Label
 
-var price : float = 100
+var price : float = 250
 var price_rounded : int
 var level: int = 0
 var disabled = true
@@ -25,16 +25,16 @@ func level_formatted(levelint) -> String :
 
 
 func _process(_delta):
-	if int(%FlyCount.text) < price  or level >= 15:
+	if int(%FlyCount.text) < price  or level >= 5:
 		button.disabled = true
 		disabled = true
-		if level >= 15:
+		if level >= 5:
 			name_label.text = "Lightning " + level_formatted("max")
 	else:
 		button.disabled = false
 		disabled = false
 		name_label.text = "Lightning " + level_formatted(level)
-	price = 100 * (1.2 ** level) # calculate using float, then use int
+	price = 250 * (1.2 ** level) # calculate using float, then use int
 	price_rounded = int(price)
 	price_label.text = str(price_rounded)
 	if Input.is_action_just_pressed("ui_accept") and get_global_rect().has_point(get_global_mouse_position()) and disabled == false and %prizes.visible == true:
