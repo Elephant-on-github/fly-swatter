@@ -13,4 +13,4 @@ no audio (not enough time / cannot be bothered)
 
 Assets made by me or from Kenney.nl (great website)
 
-see [[credits.md]]
+see  [Credits](credits.md)
