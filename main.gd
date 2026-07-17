@@ -2,6 +2,8 @@ extends Control
 signal pause_timer(bool:bool)
 
 var stop : bool
+var flies : int
+var beetles : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,45 +22,36 @@ func _process(delta):
 	if stop:
 		pass
 	elif spawn_timer >= spawn_delay:
-		#FLY
-		var random_pos = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
-								 randf_range(20, get_viewport_rect().size.y - 20))
-
-		# Create a duplicate of the sprite
-		var fly_clone = $FlyTemplate.duplicate()
-		fly_clone.visible = true
-		%timer.finished.connect(fly_clone._on_label_finished)
-		fly_clone.name = "clone"
-		# Set its position to the random location
-		fly_clone.position = random_pos
-		
-		# Add it to the scene
-		add_child(fly_clone)
-		fly_clone.collided.connect(%FlyCount._on_insect_collided)
-		fly_clone.collided.connect(%Lightning.trigger_chain)
-		fly_clone.add_to_group("insects")
+		spawn_clone($FlyTemplate)
 		
 		#BEETLE
-		var random_pos2 = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
-							 randf_range(20, get_viewport_rect().size.y - 20))
-
-		# Create a duplicate of the sprite
-		var beetle_clone = $BeetleTemplate.duplicate()
-		beetle_clone.visible = true
-		%timer.finished.connect(beetle_clone._on_label_finished)
-		beetle_clone.name = "clone"
-		# Set its position to the random location
-		beetle_clone.position = random_pos2
-		
-		# Add it to the scene
-		add_child(beetle_clone)
-		
-		beetle_clone.collided.connect(%FlyCount._on_insect_collided)
-		beetle_clone.collided.connect(%Lightning.trigger_chain)
-		beetle_clone.add_to_group("insects")
-		
+		spawn_clone($BeetleTemplate)
 		# Reset the timer
 		spawn_timer = 0.0
+
+
+func calc_number_spawn(level):
+	flies = 10 * (1.3 ** level)
+	beetles = 5 * (1.2 ** level)
+	#wasps = 2 * (1.1 ** level)
+	
+func spawn_clone(Template : FlyingInsect):
+	var random_pos = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
+							randf_range(20, get_viewport_rect().size.y - 20))
+
+		# Create a duplicate of the sprite
+	var clone = Template.duplicate()
+	clone.visible = true
+	%timer.finished.connect(clone._on_label_finished)
+	clone.name = "clone"
+	# Set its position to the random location
+	clone.position = random_pos
+	
+	# Add it to the scene
+	add_child(clone)
+	clone.collided.connect(%FlyCount._on_insect_collided)
+	clone.collided.connect(%Lightning.trigger_chain)
+	clone.add_to_group("insects")
 
 
 func _on_label_finished():

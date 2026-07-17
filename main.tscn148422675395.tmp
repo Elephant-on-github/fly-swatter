@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://bjxgqhe3b5akq" path="res://tilemap_inputs.png" id="20_ryguw"]
 [ext_resource type="Script" uid="uid://bk8pacqja1m5d" path="res://start_button.gd" id="21_d13ii"]
 [ext_resource type="Script" uid="uid://dh0qdm0qybuod" path="res://lightning.gd" id="23_a6jrf"]
-[ext_resource type="Script" uid="uid://c7gqob33j8q1u" path="res://slower.gd" id="23_xuqvo"]
 [ext_resource type="Script" uid="uid://3vshswba67mg" path="res://helpscreen.gd" id="26_lswn8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeska"]
@@ -275,6 +274,7 @@ atlas = SubResource("CompressedTexture2D_lswn8")
 region = Rect2(187, 0, 16, 16)
 
 [node name="Main" type="Control" unique_id=81225702]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -592,13 +592,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
 
 [node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/BiggerContainer/BiggerSize" unique_id=2071223682]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -170.0
-offset_right = 170.0
-offset_bottom = 41.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("19_lswn8")
 theme_override_fonts/font = ExtResource("7_4c57u")
 theme_override_font_sizes/font_size = 32
@@ -607,62 +605,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/BiggerContainer/BiggerSize" unique_id=1777572456]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -33.0
-offset_top = -62.0
-offset_right = 33.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("19_lswn8")
-theme_override_fonts/font = ExtResource("7_4c57u")
-theme_override_font_sizes/font_size = 24
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Slower" type="NinePatchRect" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer" unique_id=525506642]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("19_lswn8")
-texture = SubResource("AtlasTexture_3dc5f")
-script = ExtResource("23_xuqvo")
-
-[node name="Button" type="Button" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower" unique_id=1912131370]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "Increases count per fly swatted"
-theme = ExtResource("19_lswn8")
-theme_override_fonts/font = ExtResource("7_4c57u")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
-
-[node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower/Button" unique_id=1064549038]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -156.0
-offset_right = 156.0
-offset_bottom = 41.0
-grow_horizontal = 2
-theme = ExtResource("19_lswn8")
-theme_override_fonts/font = ExtResource("7_4c57u")
-theme_override_font_sizes/font_size = 28
-text = "Slower Flies (0)"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower/Button" unique_id=144876921]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -703,13 +645,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
 
 [node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer/Button" unique_id=571054423]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -156.0
-offset_right = 156.0
-offset_bottom = 41.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("19_lswn8")
 theme_override_fonts/font = ExtResource("7_4c57u")
 theme_override_font_sizes/font_size = 32
@@ -759,13 +699,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_oeska")
 
 [node name="Label" type="Label" parent="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Lightning/Button" unique_id=1163894315]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -132.0
-offset_right = 132.0
-offset_bottom = 41.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("19_lswn8")
 theme_override_fonts/font = ExtResource("7_4c57u")
 theme_override_font_sizes/font_size = 32
@@ -984,8 +922,7 @@ Outside of menus will exit if you press a [u] few [/u] times"
 [connection signal="escaped_prize" from="UI_ETC/Game Area/CenterContainer/prizes" to="." method="_on_prizes_escaped_prize"]
 [connection signal="Bigger_bought" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/BiggerContainer" to="swatter" method="_on_bigger_container_bigger_bought"]
 [connection signal="Cost" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/BiggerContainer" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_bigger_container_cost"]
-[connection signal="Cost" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_jucier_container_cost"]
-[connection signal="mouse_entered" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower/Button" to="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Slower" method="_on_button_mouse_entered"]
+[connection signal="prize_selected" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/BiggerContainer" to="." method="_on_bigger_container_prize_selected"]
 [connection signal="Cost" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_jucier_container_cost"]
 [connection signal="Jucier_bought" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_jucier_container_jucier_bought"]
 [connection signal="mouse_entered" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer/Button" to="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer" method="_on_button_mouse_entered"]

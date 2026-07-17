@@ -83,7 +83,7 @@ func _draw_bolt(from:Vector2, to: Vector2) -> void:
 	# Add it to the main scene tree root so it displays globally
 	get_tree().current_scene.add_child(line) 
 	
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	line.queue_free()
 
 func buy():

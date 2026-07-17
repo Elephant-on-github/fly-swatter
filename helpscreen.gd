@@ -10,7 +10,6 @@ func _ready():
 func _process(delta):
 	if self.visible == true and Input.is_action_just_pressed("ui_accept") and !get_global_rect().has_point(get_global_mouse_position()):
 		self.visible = false
-		get_tree().create_timer(0.4)
 
 
 func _on_button_pressed(): 

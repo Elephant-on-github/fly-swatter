@@ -15,7 +15,7 @@ func _process(delta):
 	if !paused:
 		num -= delta
 		num2 = int(num)
-		if num2 - 0.5 <= 0: 
+		if num2 <= 0: 
 			finished.emit()
 			self.text = str(num2)
 			num = count_to + 0.2
