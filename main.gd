@@ -1,9 +1,13 @@
 extends Control
 signal pause_timer(bool:bool)
 
-var stop : bool
+var stop : bool = false
 var flies : int
 var beetles : int
+var new_level : bool = true
+var level : int = 0
+
+@onready var leveltext = %LevelIndicator
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,20 +16,31 @@ func _ready():
 	%Start.visible = true
 	stop = true
 	pause_timer.emit(true)
+	leveltext.visible = false
+	leveltext.text = "[s][wave] Level " + str(level + 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var spawn_timer: float = 0.0
 var spawn_delay: float = 0.1
 
 func _process(delta):
+	if new_level:
+		calc_number_spawn(level)
+		print(beetles, flies)
+		new_level = false
+	
 	spawn_timer += delta
 	if stop:
 		pass
 	elif spawn_timer >= spawn_delay:
-		spawn_clone($FlyTemplate)
+		if flies > 0:
+			spawn_clone($FlyTemplate)
+			flies -= 1
 		
 		#BEETLE
-		spawn_clone($BeetleTemplate)
+		if beetles > 0:
+			spawn_clone($BeetleTemplate)
+			beetles -= 1
 		# Reset the timer
 		spawn_timer = 0.0
 
@@ -54,11 +69,29 @@ func spawn_clone(Template : FlyingInsect):
 	clone.add_to_group("insects")
 
 
+
+
 func _on_label_finished():
-	%prizes.visible = true
 	stop = true
+	var insects = get_tree().get_nodes_in_group("insects")
+	if insects == []: 
+		level += 1
+		new_level = true
+	else: 
+	# print(insects, "melon") testing
+		fail()
+	leveltext.visible = true
+	var tween = create_tween()
+	await tween.tween_property(leveltext, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE)
+	await get_tree().create_timer(0.52).timeout
+	leveltext.visible = false
+	%prizes.visible = true
+	
 	pause_timer.emit(true)
 	
+
+func fail() -> void:
+	pass # implement me
 
 # superseded by escaping
 #func _on_bigger_container_prize_selected():
