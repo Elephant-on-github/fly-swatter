@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://coidye031hqvg" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bnpm2p4kxqu4m" path="res://tilemap.png" id="2_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://ccptn16g4n7ik" path="res://fly.png" id="3_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cn16ncq6s73rp" path="res://FlySwatter.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://gucg7mdequbg" path="res://fly.gd" id="4_efxa6"]
 [ext_resource type="Texture2D" uid="uid://6i7jp4ajp7i" path="res://scarab.png" id="5_0odxb"]
 [ext_resource type="Script" uid="uid://crm2ld8ahy1bv" path="res://beetle_template.gd" id="5_1u8w0"]
@@ -36,6 +35,10 @@ region = Rect2(187, 0, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvmpa"]
 radius = 32.24903
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrkn2"]
+atlas = ExtResource("12_ycdy4")
+region = Rect2(52, 17, 25, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cqfq"]
 
@@ -331,7 +334,7 @@ shape = SubResource("CircleShape2D_mvmpa")
 [node name="swatter" type="Sprite2D" parent="." unique_id=779234917]
 z_index = 5
 position = Vector2(480, 224)
-texture = ExtResource("4_1bvp3")
+texture = SubResource("AtlasTexture_wrkn2")
 offset = Vector2(-0.125, 32.125)
 script = ExtResource("5_lquwl")
 

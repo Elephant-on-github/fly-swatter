@@ -7,6 +7,9 @@ Use point to purchase upgrades in the shop
 
 Squash more flies and advance through the levels
 
+it works ok 🤔
+
+no audio (not enough time / cannot be bothered)
 
 Assets made by me or from Kenney.nl (great website)
 
