@@ -29,7 +29,7 @@ func _process(delta):
 		button.disabled = true
 		disabled = true
 		if level >= 10:
-			name_label.text = "Jucier Flies " + level_formatted("max")
+			name_label.text = "Squash More! " + level_formatted("max")
 	else:
 		button.disabled = false
 		disabled = false
@@ -46,3 +46,5 @@ func buy():
 	Bigger_bought.emit()
 	prize_selected.emit()
 	level += 1
+	name_label.text = "Squash More! " + level_formatted(level)
+	

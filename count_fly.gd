@@ -85,3 +85,8 @@ func _on_jucier_container_cost(cost):
 
 func _on_jucier_container_jucier_bought():
 	multiplier += 1 
+
+
+func _on_beetle_template_collided(with_sprite):
+	count += 3 * multiplier
+	self.text = str(count)

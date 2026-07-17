@@ -44,3 +44,4 @@ func buy():
 	Cost.emit(price_rounded)
 	Jucier_bought.emit()
 	level += 1
+	name_label.text = "Jucier Flies " + level_formatted(level)

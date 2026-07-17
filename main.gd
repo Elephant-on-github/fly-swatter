@@ -24,15 +24,30 @@ func _process(delta):
 								 randf_range(20, get_viewport_rect().size.y - 20))
 
 		# Create a duplicate of the sprite
-		var sprite_clone = $FlyTemplate.duplicate()
-		sprite_clone.visible = true
-		%timer.finished.connect(sprite_clone._on_label_finished)
-		sprite_clone.name = "clone"
+		var fly_clone = $FlyTemplate.duplicate()
+		fly_clone.visible = true
+		%timer.finished.connect(fly_clone._on_label_finished)
+		fly_clone.name = "clone"
 		# Set its position to the random location
-		sprite_clone.position = random_pos
+		fly_clone.position = random_pos
 		
 		# Add it to the scene
-		add_child(sprite_clone)
+		add_child(fly_clone)
+		
+		var random_pos2 = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
+							 randf_range(20, get_viewport_rect().size.y - 20))
+
+		# Create a duplicate of the sprite
+		var beetle_clone = $BeetleTemplate.duplicate()
+		beetle_clone.visible = true
+		%timer.finished.connect(beetle_clone._on_label_finished)
+		beetle_clone.name = "clone"
+		# Set its position to the random location
+		beetle_clone.position = random_pos2
+		
+		# Add it to the scene
+		add_child(beetle_clone)
+		
 		
 		# Reset the timer
 		spawn_timer = 0.0

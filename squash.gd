@@ -31,3 +31,7 @@ func trigger_pulse() -> void:
 
 func _on_fly_template_collided(with_sprite):
 	trigger_pulse()
+
+
+func _on_beetle_template_collided(with_sprite):
+	trigger_pulse()

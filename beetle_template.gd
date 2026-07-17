@@ -2,7 +2,6 @@ extends Sprite2D
 
 signal collided(with_sprite)
 
-var count : int
 var active_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if name == "FlyTemplate":
+	if name == "BeetleTemplate":
 		return
 	# In the cloned sprite's script
 	if Input.is_action_just_pressed("ui_select"):
@@ -37,11 +36,10 @@ func start_moving_loop() -> void:
 	tween.finished.connect(func(): 
 		get_tree().create_timer(0.2).timeout.connect(start_moving_loop)
 	)
-#^ (partially) from the AI
 
 
 func _on_label_finished():
-	if name == "FlyTemplate":
+	if name == "BeetleTemplate":
 		return
 	queue_free()
 	

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://mbkaiujqm030"]
+
+[ext_resource type="FontFile" uid="uid://dv0asnkvkgpt3" path="res://Silkscreen/Silkscreen-Regular.ttf" id="1_yd3fu"]
+
+[resource]
+default_font = ExtResource("1_yd3fu")
+CheckBox/colors/checkbox_checked_color = Color(0.35587505, 0.5273371, 0.23772755, 1)
+CheckButton/colors/button_checked_color = Color(0.35587505, 0.5273371, 0.23772755, 1)

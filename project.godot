@@ -13,7 +13,8 @@ config_version=5
 config/name="FlySwatter"
 run/main_scene="uid://mdupxh1ff01b"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/bg_color=Color(3.468, 3.468, 3.468, 1)
+boot_splash/bg_color=Color(3.468, 3.468, 3.468, 0.361)
+boot_splash/stretch_mode=0
 boot_splash/image="uid://bxce1ewowvbti"
 config/icon="uid://dqacx1i5x8ay5"
 
