@@ -767,6 +767,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Button" type="Button" parent="Start/MarginContainer" unique_id=1453768432]
 layout_mode = 2
+focus_mode = 0
 
 [node name="Help" type="TextureRect" parent="Start/MarginContainer/Button" unique_id=1715438652]
 custom_minimum_size = Vector2(32, 32)
@@ -788,10 +789,14 @@ grow_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Button" type="Button" parent="Start/MarginContainer2" unique_id=1273378269]
+[node name="LinkButton" type="LinkButton" parent="Start/MarginContainer2" unique_id=932834271]
 layout_mode = 2
+tooltip_text = "Open Credits"
+theme = ExtResource("19_lswn8")
+underline = 2
+uri = "https://github.com/Elephant-on-github/fly-swatter/blob/master/credits.md"
 
-[node name="Credits" type="TextureRect" parent="Start/MarginContainer2/Button" unique_id=1476781854]
+[node name="Credits" type="TextureRect" parent="Start/MarginContainer2/LinkButton" unique_id=1476781854]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_right = 32.0
@@ -803,6 +808,7 @@ theme = ExtResource("19_lswn8")
 texture = SubResource("AtlasTexture_7ctrr")
 
 [node name="helpscreen" type="NinePatchRect" parent="Start" unique_id=1548271598]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(400, 264)
 layout_mode = 1

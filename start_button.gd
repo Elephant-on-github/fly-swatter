@@ -17,7 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and %helpscreen.visible == false :
 		count -= 1
 		button.text = "Press Space " + "(" + str(count) + ")"
 		var tween = self.create_tween()

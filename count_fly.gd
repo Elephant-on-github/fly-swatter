@@ -34,6 +34,7 @@ var multiplier : int = 1
 
 func _ready() -> void:
 	size = Vector2.ZERO;
+	multiplier = 1
 
 func _draw() -> void:
 	size = Vector2.ZERO;
@@ -68,9 +69,6 @@ func _draw() -> void:
 	custom_minimum_size = Vector2(min(final_text_size.x, max_width), 0);
 
 
-func _on_fly_template_collided(with_sprite):
-	count += 1 * multiplier 
-	self.text = str(count)
 
 
 func _on_bigger_container_cost(cost):
@@ -87,6 +85,6 @@ func _on_jucier_container_jucier_bought():
 	multiplier += 1 
 
 
-func _on_beetle_template_collided(with_sprite):
-	count += 3 * multiplier
+func _on_insect_collided(with_sprite, insect: FlyingInsect):
+	count += insect.score_value * multiplier
 	self.text = str(count)

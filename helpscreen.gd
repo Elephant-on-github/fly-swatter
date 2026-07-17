@@ -8,8 +8,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if self.visible == true and Input.is_action_just_pressed("ui_accept") and !get_global_rect().has_point(get_global_mouse_position()):
+		self.visible = false
+		get_tree().create_timer(0.4)
 
 
-func _on_button_pressed():
+func _on_button_pressed(): 
+	# from help button
 	self.visible = true
