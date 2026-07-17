@@ -22,7 +22,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var spawn_timer: float = 0.0
-var spawn_delay: float = 0.1
+var spawn_delay: float = 0.05
 
 func _process(delta):
 	if new_level:
@@ -31,17 +31,18 @@ func _process(delta):
 		new_level = false
 	
 	spawn_timer += delta
-	if stop:
+	if stop or %timer.num < 1:
 		pass
 	elif spawn_timer >= spawn_delay:
 		if flies > 0:
 			spawn_clone($FlyTemplate)
 			flies -= 1
-		
+		else: print("no more flies") #debug
 		#BEETLE
 		if beetles > 0:
 			spawn_clone($BeetleTemplate)
 			beetles -= 1
+		else: print("no more beetles") #debug
 		# Reset the timer
 		spawn_timer = 0.0
 
@@ -74,6 +75,7 @@ func spawn_clone(Template : FlyingInsect):
 
 func _on_label_finished():
 	stop = true
+	pause_timer.emit(true)
 	var insects = get_tree().get_nodes_in_group("insects")
 	if insects == []: 
 		level += 1
@@ -82,6 +84,7 @@ func _on_label_finished():
 	else: 
 	# print(insects, "melon") testing
 		fail()
+		return
 	leveltext.visible = true
 	leveltext.modulate.a = 1.0
 	leveltext.text = "[s][wave] Level " + str(level)
@@ -91,7 +94,6 @@ func _on_label_finished():
 	leveltext.visible = false
 	%prizes.visible = true
 	
-	pause_timer.emit(true)
 	
 
 func fail() -> void:

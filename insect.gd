@@ -15,7 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if template_name != "" and name == template_name:
 		return
 	# In the cloned sprite's script

@@ -25,12 +25,13 @@ func _process(delta):
 		pass
 
 func add_time(seconds : int):
-	num = num + seconds
+	num += seconds
+	count_to += seconds
 
 
-func _on_main_pause_timer(bool):
-	paused = bool
-	if bool == false:
+func _on_main_pause_timer(paused_remote):
+	paused = paused_remote
+	if paused_remote == false:
 		%Timericon.play("default")
 		%Swattericon.play("default")
 	else:

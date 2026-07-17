@@ -19,11 +19,11 @@ func _ready():
 	
 
 
-func level_formatted(level) -> String :
-	return "(" + str(level) + ")"
+func level_formatted(levelint) -> String :
+	return "(" + str(levelint) + ")"
 
 
-func _process(delta):
+func _process(_delta):
 	if int(%FlyCount.text) < price  or level >= 10:
 		button.disabled = true
 		disabled = true

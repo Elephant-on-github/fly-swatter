@@ -8,7 +8,7 @@ var price : float = 100
 var price_rounded : int
 var level: int = 0
 var disabled = true
-var range : int = 0 # number of flies targetted
+var rangedist : int = 0 # number of flies targetted
 
 signal Lightning_bought
 signal Cost(cost:int)
@@ -20,11 +20,11 @@ func _ready():
 	
 
 
-func level_formatted(level) -> String :
-	return "(" + str(level) + ")"
+func level_formatted(levelint) -> String :
+	return "(" + str(levelint) + ")"
 
 
-func _process(delta):
+func _process(_delta):
 	if int(%FlyCount.text) < price  or level >= 10:
 		button.disabled = true
 		disabled = true
@@ -41,14 +41,14 @@ func _process(delta):
 		buy()
 
 func reset_range():
-	range = level
+	rangedist = level
 func decrease_range():
-	range -= 1
+	rangedist -= 1
 
 func trigger_chain(_something, start_insect: FlyingInsect) -> void: #added by AI - was Vector2, crashed because signal passes FlyingInsect
 	reset_range()
 	var current_pos: Vector2 = start_insect.global_position #added by AI
-	while range > 0:
+	while rangedist > 0:
 		var insects = get_tree().get_nodes_in_group("insects")
 		var closest_insect: FlyingInsect = null
 		var closest_dist: float = INF
@@ -89,6 +89,6 @@ func _draw_bolt(from:Vector2, to: Vector2) -> void:
 func buy():
 	Cost.emit(price_rounded)
 	Lightning_bought.emit()
-	range += 1
+	rangedist += 1
 	level += 1
 	name_label.text = "Lightning " + level_formatted(level)

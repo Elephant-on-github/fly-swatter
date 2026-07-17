@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if self.visible == true and Input.is_action_just_pressed("ui_accept") and !get_global_rect().has_point(get_global_mouse_position()):
 		self.visible = false
 

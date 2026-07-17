@@ -4,12 +4,12 @@ extends NinePatchRect
 @onready var price_label = $Button/Label2
 @onready var name_label = $Button/Label
 
-var price : float = 20
+var price : float = 30
 var price_rounded : int
 var level: int = 0
 var disabled = true
 
-signal Slower_bought
+#signal Slower_bought
 signal Cost(cost:int)
 
 # Called when the node enters the scene tree for the first time.
@@ -19,11 +19,11 @@ func _ready():
 	
 
 
-func level_formatted(level) -> String :
-	return "(" + str(level) + ")"
+func level_formatted(levelint) -> String :
+	return "(" + str(levelint) + ")"
 
 
-func _process(delta):
+func _process(_delta):
 	if int(%FlyCount.text) < price  or level >= 10:
 		button.disabled = true
 		disabled = true
@@ -33,7 +33,7 @@ func _process(delta):
 		button.disabled = false
 		disabled = false
 		name_label.text = "Slower Flies " + level_formatted(level)
-	price = 20 * (1.2 ** level) # calculate using float, then use int
+	price = 30 * (1.2 ** level) # calculate using float, then use int
 	price_rounded = int(price)
 	price_label.text = str(price_rounded)
 	if Input.is_action_just_pressed("ui_accept") and get_global_rect().has_point(get_global_mouse_position()) and disabled == false and %prizes.visible == true:

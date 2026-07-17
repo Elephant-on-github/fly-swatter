@@ -29,9 +29,9 @@ func trigger_pulse() -> void:
 	tween.chain().tween_callback(new_pulse.queue_free)
 
 
-func _on_fly_template_collided(ee, type):
+func _on_fly_template_collided(_ee, _type):
 	trigger_pulse()
 
 
-func _on_beetle_template_collided(ee, type):
+func _on_beetle_template_collided(_ee, _type):
 	trigger_pulse()
