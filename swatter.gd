@@ -15,7 +15,7 @@ func _process(delta):
 
 var base = 10.0
 var level = 0
-var multiplier = 1.2
+var multiplier = 1.14
 
 func _on_bigger_container_bigger_bought():
 	level += 1
