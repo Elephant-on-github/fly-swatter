@@ -27,8 +27,8 @@ func _process(delta):
 		pass
 
 func add_time(seconds : float):
-	num += seconds
 	count_to += seconds
+	num = count_to #fixed by ai - reset timer to new base duration
 
 
 func _on_main_pause_timer(paused_remote):
