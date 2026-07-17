@@ -5,6 +5,7 @@ var stop : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = true #added by AI - Main starts invisible in scene, nothing was showing
 	%prizes.visible = false
 	%Start.visible = true
 	stop = true
@@ -34,6 +35,9 @@ func _process(delta):
 		# Add it to the scene
 		add_child(fly_clone)
 		fly_clone.collided.connect(%FlyCount._on_insect_collided)
+		fly_clone.collided.connect(%Lightning.trigger_chain)
+		fly_clone.add_to_group("insects")
+		
 		#BEETLE
 		var random_pos2 = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
 							 randf_range(20, get_viewport_rect().size.y - 20))
@@ -50,7 +54,8 @@ func _process(delta):
 		add_child(beetle_clone)
 		
 		beetle_clone.collided.connect(%FlyCount._on_insect_collided)
-		
+		beetle_clone.collided.connect(%Lightning.trigger_chain)
+		beetle_clone.add_to_group("insects")
 		
 		# Reset the timer
 		spawn_timer = 0.0
