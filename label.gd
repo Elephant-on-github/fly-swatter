@@ -27,3 +27,9 @@ func _process(delta):
 
 func _on_main_pause_timer(bool):
 	paused = bool
+	if bool == false:
+		%Timericon.play("default")
+		%Swattericon.play("default")
+	else:
+		%Timericon.pause()
+		%Swattericon.pause()

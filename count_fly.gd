@@ -67,7 +67,7 @@ func _draw() -> void:
 	# Set custom minimum size based on actual text dimensions
 	var final_text_size := font.get_string_size(displayed_text, horizontal_alignment, -1, best_size, justification_flags, text_direction as TextServer.Direction);
 	custom_minimum_size = Vector2(min(final_text_size.x, max_width), 0);
-
+# mainly from a random github about sizing?
 
 
 
