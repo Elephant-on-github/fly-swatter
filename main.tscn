@@ -414,8 +414,8 @@ size_flags_horizontal = 6
 [node name="Timericon" type="AnimatedSprite2D" parent="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/MarginContainer" unique_id=1324615651]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(32.000015, 115.000015)
-scale = Vector2(5, 5)
+position = Vector2(4, 126.000015)
+scale = Vector2(3.34375, 3.34375)
 sprite_frames = SubResource("SpriteFrames_5vw27")
 frame_progress = 0.64202535
 script = ExtResource("7_272bh")
@@ -438,8 +438,10 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_4c57u")
-theme_override_font_sizes/font_size = 108
-text = "0"
+theme_override_font_sizes/font_size = 82
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
 script = ExtResource("7_kek77")
 
 [node name="NinePatchRect4" type="NinePatchRect" parent="UI_ETC/MarginContainer/Info Area" unique_id=2063553596]
@@ -819,6 +821,7 @@ vertical_alignment = 1
 
 [node name="Start" type="Control" parent="." unique_id=1414067729]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 layout_mode = 1
 anchors_preset = 15

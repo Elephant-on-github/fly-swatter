@@ -17,7 +17,7 @@ func _ready():
 	stop = true
 	pause_timer.emit(true)
 	leveltext.visible = false
-	leveltext.text = "[s][wave] Level " + str(level + 1)
+	#leveltext.text = "[s][wave] Level " + str(level + 1) lower down
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var spawn_timer: float = 0.0
@@ -45,9 +45,9 @@ func _process(delta):
 		spawn_timer = 0.0
 
 
-func calc_number_spawn(level):
-	flies = 10 * (1.3 ** level)
-	beetles = 5 * (1.2 ** level)
+func calc_number_spawn(levelint):
+	flies = 10 * (1.3 ** levelint)
+	beetles = 5 * (1.2 ** levelint)
 	#wasps = 2 * (1.1 ** level)
 	
 func spawn_clone(Template : FlyingInsect):
@@ -76,14 +76,17 @@ func _on_label_finished():
 	var insects = get_tree().get_nodes_in_group("insects")
 	if insects == []: 
 		level += 1
+		%timer.add_time(1)
 		new_level = true
 	else: 
 	# print(insects, "melon") testing
 		fail()
 	leveltext.visible = true
+	leveltext.modulate.a = 1.0
+	leveltext.text = "[s][wave] Level " + str(level)
 	var tween = create_tween()
-	await tween.tween_property(leveltext, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE)
-	await get_tree().create_timer(0.52).timeout
+	tween.tween_property(leveltext, "modulate:a", 0.0, 0.7).set_trans(Tween.TRANS_SINE)
+	await get_tree().create_timer(0.72).timeout
 	leveltext.visible = false
 	%prizes.visible = true
 	

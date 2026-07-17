@@ -24,6 +24,9 @@ func _process(delta):
 	else:
 		pass
 
+func add_time(seconds : int):
+	num = num + seconds
+
 
 func _on_main_pause_timer(bool):
 	paused = bool
