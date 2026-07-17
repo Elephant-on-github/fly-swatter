@@ -46,6 +46,11 @@ func _process(delta):
 		# Reset the timer
 		spawn_timer = 0.0
 
+	#fixed by ai - check for early round end after spawning is done
+	var insects = get_tree().get_nodes_in_group("insects")
+	if insects == [] and new_level == false and not stop and flies == 0 and beetles == 0:
+		_on_label_finished()
+
 
 func calc_number_spawn(levelint):
 	flies = 5 * (1.3 ** levelint)
