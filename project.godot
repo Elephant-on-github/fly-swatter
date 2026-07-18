@@ -23,7 +23,7 @@ config/icon="uid://dqacx1i5x8ay5"
 window/size/viewport_width=1048
 window/size/viewport_height=590
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep" #fixed by ai - lock aspect ratio to prevent web export distortion
 
 [editor_plugins]
 
