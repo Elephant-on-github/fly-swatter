@@ -1,15 +1,15 @@
 # A silly game about swatting flies
 Made in Godot. 👍 by elephant_dev (me)
 
-Move the mouse to target a fly, then press space to swat the fly, earning points. 
+Move the mouse to target a fly, then press *space* to swat the fly, earning points. 
 
 Use point to purchase upgrades in the shop
 
 Squash more flies and advance through the levels
 
-it works ok 🤔
+it works ok 🤔 but needs balancing
 
-no audio (not enough time / cannot be bothered)
+~~no audio (not enough time / cannot be bothered)~~
 
 Assets made by me or from Kenney.nl (great website)
 
