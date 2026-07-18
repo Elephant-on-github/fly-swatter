@@ -41,10 +41,6 @@ atlas = ExtResource("12_ycdy4")
 region = Rect2(52, 17, 25, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cqfq"]
-radius = 20.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_beetle"]
-radius = 64.0 #fixed by ai - compensate for beetle 0.5 scale so effective hitbox matches fly
 
 [sub_resource type="Gradient" id="Gradient_vivmo"]
 interpolation_mode = 2
@@ -328,13 +324,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_0odxb")
 script = ExtResource("5_1u8w0")
 injured_texture = ExtResource("7_qsp4k")
-injured_color = Color(0.8627451, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="BeetleTemplate" unique_id=1167661403]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeetleTemplate/Area2D" unique_id=1005015616]
 position = Vector2(2, -2)
-shape = SubResource("CircleShape2D_beetle") #fixed by ai - separate shape for beetle
+shape = SubResource("CircleShape2D_mvmpa")
 
 [node name="swatter" type="Sprite2D" parent="." unique_id=779234917]
 z_index = 5
@@ -991,21 +986,19 @@ tooltip_text = "Credits - See source
 theme = ExtResource("19_lswn8")
 texture = SubResource("AtlasTexture_7ctrr")
 
-[node name="helpscreen" type="NinePatchRect" parent="." unique_id=1548271598]
+[node name="helpscreen" type="NinePatchRect" parent="Start" unique_id=1548271598]
 unique_name_in_owner = true
-self_modulate = Color(0.78235406, 0.78235406, 0.78235406, 1)
-z_index = 11
-custom_minimum_size = Vector2(400, 320)
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_a6jrf")
@@ -1015,7 +1008,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 script = ExtResource("26_lswn8")
 
-[node name="MarginContainer" type="MarginContainer" parent="helpscreen" unique_id=829535650]
+[node name="MarginContainer" type="MarginContainer" parent="Start/helpscreen" unique_id=829535650]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1027,10 +1020,9 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="RichTextLabel" type="RichTextLabel" parent="helpscreen/MarginContainer" unique_id=410917135]
+[node name="RichTextLabel" type="RichTextLabel" parent="Start/helpscreen/MarginContainer" unique_id=410917135]
 layout_mode = 2
 theme = ExtResource("19_lswn8")
-theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[center][font_size=32][u][b] How To [/b][/u][/font_size][/center]
 
@@ -1040,7 +1032,7 @@ do it over buttons to [pulse] select! [/pulse]
 
 Outside of menus will exit if you press a [u] few [/u] times
 
-Some bugs can be [color=red] injured [/color] they will take more hits"
+Some bugs can be [color=red] injured [/color]"
 
 [connection signal="pause_timer" from="." to="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" method="_on_main_pause_timer"]
 [connection signal="finished" from="UI_ETC/MarginContainer/Info Area/NinePatchRect3/NinePatchRect2/timer" to="." method="_on_label_finished"]
@@ -1053,5 +1045,4 @@ Some bugs can be [color=red] injured [/color] they will take more hits"
 [connection signal="Jucier_bought" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/JucierContainer" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_jucier_container_jucier_bought"]
 [connection signal="Cost" from="UI_ETC/Game Area/CenterContainer/prizes/MarginContainer/VBoxContainer/Lightning" to="UI_ETC/MarginContainer/Info Area/NinePatchRect4/NinePatchRect2/CenterContainer/FlyCount" method="_on_jucier_container_cost"]
 [connection signal="start" from="Start/VBoxContainer/CenterContainer/TextureRect2" to="." method="_on_texture_rect_2_start"]
-[connection signal="pressed" from="Start/MarginContainer/Button" to="helpscreen" method="_on_button_pressed"]
-[connection signal="closed" from="helpscreen" to="." method="_on_helpscreen_closed"]
+[connection signal="pressed" from="Start/MarginContainer/Button" to="Start/helpscreen" method="_on_button_pressed"]
