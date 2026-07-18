@@ -7,9 +7,14 @@ Use point to purchase upgrades in the shop
 
 Squash more flies and advance through the levels
 
+99% of control is mouse + space
+
 it works ok 🤔 but needs balancing
 
 ~~no audio (not enough time / cannot be bothered)~~
+
+------
+
 
 Assets made by me or from Kenney.nl (great website)
 
