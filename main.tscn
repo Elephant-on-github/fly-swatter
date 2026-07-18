@@ -43,6 +43,9 @@ region = Rect2(52, 17, 25, 100)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cqfq"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_beetle"]
+radius = 64.0 #fixed by ai - compensate for beetle 0.5 scale so effective hitbox matches fly
+
 [sub_resource type="Gradient" id="Gradient_vivmo"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.0015873313, 1)
