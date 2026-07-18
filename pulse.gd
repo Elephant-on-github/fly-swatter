@@ -6,7 +6,7 @@ func _ready():
 	if owner != null:
 		collision_shape = %CollisionShapeSwatter
 
-func trigger_pulse() -> void: #fixed by ai - only called from collided signal now
+func trigger_pulse(_a="", _b="", _c="") -> void: #fixed by ai - accept signal args
 	var new_pulse = self.duplicate()
 	get_parent().add_child(new_pulse)
 	
