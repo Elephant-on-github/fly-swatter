@@ -15,6 +15,8 @@ func _ready():
 	start_moving_loop()
 
 
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if template_name != "" and name == template_name:

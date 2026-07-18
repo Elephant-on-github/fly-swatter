@@ -77,11 +77,13 @@ func _draw() -> void:
 func _on_bigger_container_cost(cost):
 	count = count - cost
 	self.text = str(count)
+	get_node("/root/Main").prize_selected = true
 
 
 func _on_jucier_container_cost(cost):
 	count = count - cost
 	self.text = str(count)
+	get_node("/root/Main").prize_selected = true
 
 
 func _on_jucier_container_jucier_bought():

@@ -7,11 +7,14 @@ var beetles : int
 var new_level : bool = true
 var level : int = 0
 var new_game : bool = true
+var prize_selected : bool = false
 
 @onready var leveltext = %LevelIndicator
 
 # Called when the node enters the scene tree for the first time.
 var sound = load("res://fly-swatter-2.mp3")
+var sound2 = load("res://switch26.ogg")
+var cash  = load("res://cash.mp3")
 var sound_player := AudioStreamPlayer.new()
 
 func _ready():
@@ -59,6 +62,14 @@ func _process(delta):
 	if stop == false and Input.is_action_just_pressed("ui_accept"):
 		sound_player.stream = sound
 		sound_player.play()
+	elif Input.is_action_just_pressed("ui_accept"): 
+		sound_player.stream = sound2
+		sound_player.play()
+		
+	if prize_selected == true:
+		sound_player.stream = cash
+		sound_player.play()
+		prize_selected = false
 		
 	#fixed by ai - check for early round end after spawning is done
 	var insects = get_tree().get_nodes_in_group("insects")
@@ -67,8 +78,8 @@ func _process(delta):
 
 
 func calc_number_spawn(levelint):
-	flies = 5 * (1.2 ** levelint)
-	beetles = 1 * (1.1 ** levelint)
+	flies = 8 * (1.2 ** levelint)
+	beetles = 2 * (1.1 ** levelint)
 	#wasps = 2 * (1.05 ** level)
 	
 func spawn_clone(Template : FlyingInsect):
@@ -101,7 +112,7 @@ func _on_label_finished():
 	var insects = get_tree().get_nodes_in_group("insects")
 	if insects == []: 
 		level += 1
-		%timer.add_time(0.5)
+		%timer.add_time(0.3)
 		new_level = true
 	else: 
 	# print(insects, "melon") testing

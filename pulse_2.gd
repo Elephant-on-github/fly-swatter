@@ -57,7 +57,7 @@ func trigger_pulse_at(pos: Vector2, rot: float) -> void:
 func calculate_target_scale() -> Vector2:
 	var shape = collision_shape.shape
 	var tex_size = texture.get_size()
-	var shape_scale = collision_shape.scale 
+	var shape_scale = collision_shape.scale /2
 	
 	if shape is CircleShape2D:
 		var factor = (shape.radius * 2.0 / tex_size.x) * shape_scale.x
