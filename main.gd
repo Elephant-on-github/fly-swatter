@@ -6,10 +6,14 @@ var flies : int
 var beetles : int
 var new_level : bool = true
 var level : int = 0
+var new_game : bool = true
 
 @onready var leveltext = %LevelIndicator
 
 # Called when the node enters the scene tree for the first time.
+var sound = load("res://fly-swatter-2.mp3")
+var sound_player := AudioStreamPlayer.new()
+
 func _ready():
 	visible = true #added by AI - Main starts invisible in scene, nothing was showing
 	%prizes.visible = false
@@ -18,9 +22,10 @@ func _ready():
 	stop = true
 	pause_timer.emit(true)
 	leveltext.visible = false
+	new_game = true
+	add_child(sound_player) #fixed by ai - audio player must be in tree to play
 	#leveltext.text = "[s][wave] Level " + str(level + 1) lower down
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 var spawn_timer: float = 0.0
 var spawn_delay: float = 0.05
 
@@ -29,6 +34,11 @@ func _process(delta):
 		calc_number_spawn(level)
 		print(beetles, flies)
 		new_level = false
+	if new_game and %Start.visible == false:
+		%helpscreen.visible = true #mandatory help screen
+		new_game = false
+		stop = true
+		pause_timer.emit(true)
 	
 	spawn_timer += delta
 	if stop or %timer.num < 2:
@@ -46,6 +56,10 @@ func _process(delta):
 		# Reset the timer
 		spawn_timer = 0.0
 
+	if stop == false and Input.is_action_just_pressed("ui_accept"):
+		sound_player.stream = sound
+		sound_player.play()
+		
 	#fixed by ai - check for early round end after spawning is done
 	var insects = get_tree().get_nodes_in_group("insects")
 	if insects == [] and new_level == false and not stop and flies == 0 and beetles == 0:
@@ -53,9 +67,9 @@ func _process(delta):
 
 
 func calc_number_spawn(levelint):
-	flies = 5 * (1.3 ** levelint)
-	beetles = 1 * (1.2 ** levelint)
-	#wasps = 2 * (1.1 ** level)
+	flies = 5 * (1.2 ** levelint)
+	beetles = 1 * (1.1 ** levelint)
+	#wasps = 2 * (1.05 ** level)
 	
 func spawn_clone(Template : FlyingInsect):
 	var random_pos = Vector2(randf_range(350, get_viewport_rect().size.x - 20), 
@@ -131,5 +145,10 @@ func _on_prizes_escaped_prize():
 
 func _on_texture_rect_2_start():
 	%Start.visible = false
+	#stop = false
+	#pause_timer.emit(false) moved down
+
+
+func _on_helpscreen_closed():
 	stop = false
 	pause_timer.emit(false)
